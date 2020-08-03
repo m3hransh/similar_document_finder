@@ -1,68 +1,96 @@
 # Find Similar Documents (using LCS) 
+In this project, we are going to impelement a similar document finder
+that will try to find similar document on the web based on the given document,
+and it's going to give a score how much the documents are similar to each other.
 ### Phases
 - [x] Implementing LCS
 - [x] Similarity and Dependency Score
-- [ ] Scrape specific website documents and compare to a given document
-- [ ] Find similar codes to the given code in Geekforgeeks website
+- [x] Scrape specific website documents and compare to a given document
+- [x] Find similar codes to the given code in Geekforgeeks website
 - [ ] General approach of finding similar documents on Google
-### Requirement
+### Application Installation
 Install Python3 on your machine.
-By the following command install required packages from the requirement file:
+By the following command in the directory of the cloned porject
+you can install command line application.
 ``` bash
-$ pip install -r requirement.txt
+$ pip install --editable .
 ```
-### executing
-Specify your documents in the text files and use the [main.py](main.py)
-program to compare those files. Consider these files:
-#### text 1
-```
-Both rest of know draw fond post as.  
-It agreement defective to excellent. Feebly 
-do engage of narrow. Extensive repulsive belonging 
-depending if promotion be zealously as.
-Preference inquietude asknow 
-are dispatched led appearance. Small meantin so doubt 
-hopes. Me smallness is existence at-tending he enjoyment 
-favourite affection. Deliv-ered is to ye belonging enjoyment 
-preferred. As-tonished and acceptance men two discretion. 
-Laweducation recommend did objection how old.
-To sure calm much most long me mean. 
-Able rent long in do we. Uncommonly no it 
-announcingmelancholy an in. Mirth learn it he 
-given. Secureshy favour length all twenty denote. 
-He felicity noan at packages answered opinions juvenile.
-```
-#### text 2
-```
-Both rest of know draw fond post as.  
-It agreement defective to excellent. Feebly 
-do engage of narrow. Extensive repulsive belonging 
-depending if promotion be zealously as.
-Performed suspicionin certainty so frankness by attention 
-pretended.Newspaper or in tolerably education enjoyment.
-Extremity excellent certainty discourse sincerityno he so 
-resembled. Joy house worse arise totalboy but. Elderly up 
-chicken do at feeling is. Likeseen drew no make fond at on 
-rent.  Behaviourextremely her explained situation yet 
-septembergentleman are who. Is thought or pointed 
-hearinghe.
-To sure calm much most long me mean. 
-Able rent long in do we. Uncommonly no it 
-announcingmelancholy an in. Mirth learn it he 
-given. Secureshy favour length all twenty denote. 
-He felicity noan at packages answered opinions juvenile.
-```
-``` 
-$ ./main.py text1.txt text2.txt
-Similarity Score: 42.77%  
-Dependency Score of text1 on text2: 64.15%  
-Dependency Score of text2 on text1: 56.20%
+### Examples
+Now **docsim** should be installed in you terminal.
+To make sure write following command on you terminal.
+``` bash
+$ docsim --help
 
-LCS Words: 
-Both rest of know draw fond post as. It agreement defective to
-excellent. Feebly do engage of narrow. Extensive repulsive belonging depending if promotion be zealously as. so he To sure
-calm much most long me mean. Able rent long in do we. Uncommonly
-no it announcingmelancholy an in. Mirth learn it he given.
-Secureshy favour length all twenty denote. He felicity noan at
-packages answered opinions juvenile.
+Usage: docsim [OPTIONS] COMMAND [ARGS]...
+
+  Simple CLI for finding similarity between codes
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  check-dir       Find most similar pairs for each file in the directory.
+  check-files     Check the similarity of two code files.
+  clean-comments  Find most similar pairs for each file in the directory.
+  query           Search files on the google.
+
 ```
+If the result is the same, you are good to use other commands. There are some code samples in the folder code-samples of project. By the following command you can find most similar pairs in the folder:
+### example 1
+``` bash
+$ docsim check-dir  code-samples
+file1: code06.cpp
+file2: code01.cpp 
+Similarity Score: 98.90%
+dependency Score: (98.90%, 100.00%)
+
+file1: code01.cpp
+file2: code06.cpp 
+Similarity Score: 98.90%
+dependency Score: (100.00%, 98.90%)
+
+file1: code05.cpp
+file2: code02.cpp 
+Similarity Score: 74.19%
+dependency Score: (81.66%, 89.03%)
+
+file1: code02.cpp
+file2: code05.cpp 
+Similarity Score: 74.19%
+dependency Score: (89.03%, 81.66%)
+
+file1: code04.py
+file2: code03.py 
+Similarity Score: 26.11%
+dependency Score: (42.16%, 40.69%)
+
+file1: code03.py
+file2: code04.py 
+Similarity Score: 26.11%
+dependency Score: (40.69%, 42.16%)
+
+``` 
+You can search codes on **Geeksforgeeks** by some keywords and if will return the URL that has the most similar result by it's score and a figure of
+LCS occurance distribution as shown below.
+
+### example 2
+``` bash
+$ docsim query --file code-samples/code01.cpp -k 'n queen' --plot
+
+url:https://www.geeksforgeeks.org/n-queen-problem-backtracking-3/ 
+Similarity Score: 65.30%
+dependency Score: (79.44%, 78.57%)
+LCS:
+"
+define N void int board N N for int i 0 i N i for int j 0 j N j 
+board i j bool int board N N int row int col int i 0 i col i 
+if board row i return false for i row j col i 0 j 0 i j if board 
+i j return false for i row j col j 0 i N i j if board i j return 
+false return true bool int board N N int col if col N return true 
+for int i 0 i N i if board i col board i col 1 if board col 1 
+return true board i col 0 return false bool int board N N 0 0 0 
+if board 0 false Solution does not exist return false board 
+return true int main"
+```
+![LCS occurance distribution](doc/images/docsim_fig.png)
+

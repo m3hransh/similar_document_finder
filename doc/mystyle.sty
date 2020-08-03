@@ -177,7 +177,7 @@ emphstyle=\ttfamily\color{deepblue},    % Custom highlighting style
   basicstyle = \color{white}\ttfamily,
   otherkeywords={$},
 emph={%
-        main,py,%                                            literal strings listed here
+        docsim,%                                            literal strings listed here
         },emphstyle={\color{codegreen}\ttfamily},%              and formatted in blue
     alsoletter={->,*,?,:,|,;},%
     morekeywords={->,*,?,:,|,;},%  
@@ -185,7 +185,7 @@ emph={%
 }
 
 % a shaded figure
-\newenvironment{fig-shaded}[2]{
+\newenvironment{fig-terminal}[2]{
   \begin{figure}[H]
     \caption{#1}
     \label{#2}
@@ -195,7 +195,16 @@ emph={%
     \end{mdframed}
   \end{figure}
 }
-
+\newenvironment{fig-shaded}[2]{
+  \begin{figure}[H]
+    \caption{#1}
+    \label{#2}
+    \begin{mdframed}[linecolor=black!30,backgroundcolor=backcolour]
+    
+}{
+    \end{mdframed}
+  \end{figure}
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %listings style
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

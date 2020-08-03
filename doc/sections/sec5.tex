@@ -1,0 +1,32 @@
+\section{Find The Most Similar Code in Geeksforgeeks}
+In this section, we write an application that will search 
+geeksforgeeks on the Google by some specified keywords, and try 
+to find the most similar code to the code that is given by the user.
+So first, we need to find the URLs by google search and then scrape 
+code sections of each URL to compare it with the given document. 
+For the comparison and Similarity score we will use the previous 
+implementations.
+
+
+\subsection{Web Scraping}
+\textbf{Web scraping} is the porcess of gathering information from the
+Internet. The word usually refer to a process that involves automation.
+There challenges to web scraping. One of those are the websites varies
+in the structure. So we need unique way of treating those and gathering
+information we want.
+another challenge about web scraping is that through time the structure
+website can change and the program you wrote may become irrelevant in the
+future.
+
+\subsection{Implementing Web Scraping in Python}
+For implementation the searching part we will use \href{https://pypi.org/project/google/}{\textbf{google}} python package.
+For scraping part we will use \textbf{request} and \textbf{BeautifulSoup}.
+In this section, we only consider, gathering codes from
+\href{https://www.geeksforgeeks.org/}{Geeksforgeeks.org} website to not 
+deal with the variety structure of websites and can gather exactly the
+data we want. So first, with the use of google search we find relevant geeksforgeeks
+URLs and then scrape top list URLs to get relevant codes against some keywords
+given by the user. The following Listing \ref{lis:scrape} is the implementation of two functions
+that do these tasks.
+
+\pythonexternal[caption=Implementing of Web Scraping and Google search in Python,label=lis:scrape]{codes/scraping.py}

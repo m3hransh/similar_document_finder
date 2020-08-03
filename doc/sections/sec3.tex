@@ -12,13 +12,13 @@ is defined as following:
   S(A,B) = \frac{|LCS(A,B)|}{|A|} 
 \end{equation}
 shows the dependency of set A on set B.
-\subsection{Partial Inclusion}
+\subsection{Partial Dependency}
 What if the documents are not the subset of each other nor similar but
 still there is some parts in them that are exactly the same. In LCS, we 
 don't care about if the similar words occurs in dense or in a sparse
 space. As an example consdier two following random texts. The colored parts
 shows the parts that are similar. As you can see if the uncolored text increase
-the Similarity and Inclusion score is going to decrease, although they have
+the Similarity and Dependency score is going to decrease, although they have
 exactly similar parts in them. 
 
 \begin{table}[H]
@@ -75,7 +75,7 @@ Figure \ref{fig:dist}.
   \label{fig:dist}
 \end{figure}
 
-\subsection{Implementing Inclusion Score in Python}
+\subsection{Implementing Dependency Score in Python}
 Now let's implement the the Dependency Score using formula in the
 Equation \ref{eq:inc-s}. For the partial inclusion, the occurance
 indexes of LCS will be found to draw the the graph later in another

@@ -1,0 +1,119 @@
+\section{Command-Line Applicatoin}
+In this section, a CLI will be created that works based on the previous
+implementations. Description of the applicaton is shown in the Figure \ref{fig:cli}.
+
+\begin{fig-shaded}{CLI Description}{fig:cli}
+\begin{lstlisting}[style=BASH, style=mystyle]
+Usage: docsim [OPTIONS] COMMAND [ARGS]...
+
+  Simple CLI for finding similarity between codes
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  check-dir    Find most similar pairs for each file in the directory.
+  check-files  Check the similarity of two code files.
+  clean-comments  Find most similar pairs for each file in the directory.
+  query        Search files on the google.
+
+##############################################################################
+Usage: docsim check-dir [OPTIONS] DIR
+
+  Find most similar pairs for each file in the directory.
+
+Options:
+  --plot / --no-plot  Draw plot of the lcs occurance distribution
+
+##############################################################################
+Usage: docsim check-files [OPTIONS] FILENAME1 FILENAME2
+
+  Check the similarity of two code files.
+
+Options:
+  --plot / --no-plot  Draw plot of the lcs occurance distribution
+
+##############################################################################
+Usage: docsim query [OPTIONS]
+
+  Search files on the google.
+
+Options:
+  -f, --file PATH      File path
+  -d, --dir TEXT       Directory of code files
+  -n, --num INTEGER    Number websites will check on Google
+  -k, --keywords TEXT  Keywords for searching on google
+  -w, --website TEXT   Website to search on google, default value:
+                       www.geeksforgeeks.org
+
+  --plot / --no-plot   Darw plot of the lcs occurance distribution of two top
+                       documents
+
+\end{lstlisting}
+\end{fig-shaded}
+
+For implementation \href{https://click.palletsprojects.com/en/7.x/}{\textbf{Click}} package is used. The code
+is shown in the Listing \ref{lis:app}.
+\pythonexternal[caption=Python CLI using previous Implementations,label=lis:app]{codes/app.py}
+
+\subsection{Execution samples}
+Let's run the program on samples codes that is gathered from real project
+codes of DS students. The codes are implementation of n-queen or magic square. 
+There is a \textit{sample-codes} folder in the project that consist of 6 codes.
+
+\begin{fig-terminal}{Execution of command \textsf{\textbf{docsim} check-dir  code-samples}}{fig:exe}
+\begin{lstlisting}[style=BASH]
+$ docsim check-dir  code-samples
+file1: code06.cpp
+file2: code01.cpp 
+Similarity Score: 98.90%
+dependency Score: (98.90%, 100.00%)
+
+file1: code01.cpp
+file2: code06.cpp 
+Similarity Score: 98.90%
+dependency Score: (100.00%, 98.90%)
+
+file1: code05.cpp
+file2: code02.cpp 
+Similarity Score: 74.19%
+dependency Score: (81.66%, 89.03%)
+
+file1: code02.cpp
+file2: code05.cpp 
+Similarity Score: 74.19%
+dependency Score: (89.03%, 81.66%)
+
+file1: code04.py
+file2: code03.py 
+Similarity Score: 26.11%
+dependency Score: (42.16%, 40.69%)
+
+file1: code03.py
+file2: code04.py 
+Similarity Score: 26.11%
+dependency Score: (40.69%, 42.16%)
+\end{lstlisting}
+\end{fig-terminal}
+
+\begin{fig-terminal}{Execution of command \textsf{\textbf{docsim} query --file code-samples/code01.cpp -k 'n queen' --plot}}{fig:exe2}
+\begin{lstlisting}[style=BASH]
+$ docsim query --file code-samples/code01.cpp -k 'n queen' --plot
+
+url:https://www.geeksforgeeks.org/n-queen-problem-backtracking-3/ 
+Similarity Score: 65.30%
+dependency Score: (79.44%, 78.57%)
+LCS:
+define N void int board N N for int i 0 i N i for int j 0 j N j 
+board i j bool int board N N int row int col int i 0 i col i 
+if board row i return false for i row j col i 0 j 0 i j if board 
+i j return false for i row j col j 0 i N i j if board i j return 
+false return true bool int board N N int col if col N return true 
+for int i 0 i N i if board i col board i col 1 if board col 1 
+return true board i col 0 return false bool int board N N 0 0 0 
+if board 0 false Solution does not exist return false board 
+return true int main
+
+\end{lstlisting}
+\scalebox{.35}{\input{images/docsim-fig.pgf}}
+\end{fig-terminal}

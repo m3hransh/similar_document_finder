@@ -7,7 +7,7 @@ def LCS(text1, text2):
     m = len(text2)
 
     # create (n+1)*(m+1) table
-    table = [[[]]*(m+1)]*(n+1)
+    table = [[[]]*(m+1) for i in range(n+1)]
 
     # map index of texts to table
     indx = lambda i: i+1 

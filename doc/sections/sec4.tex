@@ -1,11 +1,18 @@
-\section{Execution of Similarity and Inclusion Score using LCS}
+\section{Documents Similarity Program}
 
 In this section, we write a Python program that uses previous 
 implementations. The program is going to read two texts from 
 files that are given by system arguments through the execution 
 terminal and is going to print the Similarity and Dependency score 
 with the LCS strings. Afterward, will plot the distribution of LCS 
-occurrence in both text1 and text2. 
+occurrence in both text1 and text2. Before that, for making life easier
+, we create Class is called \textbf{Docs_Sim} that have all the functionality
+we need for comparing two documents. The code is shown in the Listing \ref{lis:docs}
+
+\pythonexternal[caption= \textit{Docs_Sim} class Implementation,label=lis:docs]{codes/docs-sim.py}
+
+Using class \textit{Docs_Sim} Listing \ref{lis:main} shows a program that takes two files as input.
+And print resulted score on Console with plot that shows the distribution of LCS occurances.
 
 \pythonexternal[caption=Python program using previous Implementation,label=lis:main]{codes/main1.py}
 
@@ -15,7 +22,7 @@ Table \ref{tab:table1}. The plot is going to be similar to Figure \ref{fig:dist}
 you can see, the Similarity score of texts is 42.77\% and Inclusion score
 (the rate the smaller text depends on the bigger text) is 64.15\%.
 
-\begin{fig-shaded}{Execution of program in Listing \ref{lis:main}}{fig:exe}
+\begin{fig-terminal}{Execution of program in Listing \ref{lis:main}}{fig:exe}
 \begin{lstlisting}[style=BASH]
 $ ./main.py text1.txt text2.txt
 Similarity Score: 42.77%  
@@ -31,7 +38,7 @@ do we. Uncommonly no it announcingmelancholy an in. Mirth learn
 it he given. Secureshy favour length all twenty denote. 
 He felicity noan at packages answered opinions juvenile.
 \end{lstlisting}
-\end{fig-shaded}
+\end{fig-terminal}
 If you have cloned the application’s Git repository on GitHub, you
 can run \texttt{git checkout phase\#1} to check out this version of the application.
 

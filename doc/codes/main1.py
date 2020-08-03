@@ -1,14 +1,6 @@
 #! /usr/bin/python3
 import sys
-import numpy as np
-import matplotlib.pyplot as plt
-from lcs import LCS, sim_rate, contain_rate, dist_finder
-
-
-def plot_at_y(ax, arr, val, **kwargs):
-    '''Plot 1-d scatter'''
-    ax.plot(arr, np.zeros_like(arr) + val, 'x',color='green', **kwargs)
-    ax.set_yticklabels([])
+from docs_sim import Docs_Sim
 
 
 if __name__ == "__main__":
@@ -25,21 +17,16 @@ if __name__ == "__main__":
     with open(f_name1, 'r') as f1:
         with open(f_name2, 'r') as f2:
             # Read and split text to words
-            t1 = f1.read().split()
-            t2 = f2.read().split()
-
-            lcs = LCS(t1, t2)
-            sim = sim_rate(t1,t2,lcs)
-            contain = contain_rate(t1, t2, lcs)
+            t1 = f1.read()
+            t2 = f2.read()
+            docs = Docs_Sim(t1,t2)
+            docs.LCS()
+            sim = docs.sim_score()
+            dep1,dep2 = docs.depend_score()
 
             print("Similarity Score: {:.2%}  \n"
-                    "Inclusion Score: {:.2%}  \n"
-                    "\nLCS Words: \n{}".format(sim, contain, ' '.join(lcs)))
-
-            # Plotting distribution of LCS occurances in t1 and t2
-            fig, (ax1, ax2) = plt.subplots(2)
-            ax1.set_title("Text1 LCS occurance")
-            ax2.set_title("Text2 LCS occurance")
-            plot_at_y(ax1, dist_finder(t1, lcs), 0) 
-            plot_at_y(ax2, dist_finder(t2, lcs), 0)
-            plt.show()
+                    "Dependency Score of text1 on text2: {:.2%}  \n"
+                    "Dependency Score of text2 on text1: {:.2%}  \n"
+                    "\nLCS Words: \n{}".format(sim, dep1, dep2, ' '.join(docs.lcs)))
+            
+            docs.draw_dist()
