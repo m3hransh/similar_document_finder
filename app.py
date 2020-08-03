@@ -141,7 +141,7 @@ def remove_commment(string, file_ex='py'):
 @cli.command()
 @click.argument('dir', type=click.Path(exists=True))
 def clean_comments(dir):
-    '''Find most similar pairs for each file in the directory.'''
+    '''Remove c-style and python-style comments for each file in the directory.'''
     file_list = os.listdir(dir)
 
     for file in file_list:

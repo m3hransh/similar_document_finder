@@ -1,8 +1,8 @@
 # Find Similar Documents (using LCS) 
-**This is an Algorithm Course(Winter 2020) Project of [Bu-Ali Sina University](http://basu.ac.ir/en/home).**
-In this project, a similar document finder will be impelemented,
+**This is an Algorithm Course (Winter 2020) Project of [Bu-Ali Sina University](http://basu.ac.ir/en/home).**
+In this project, a similar-document-finder will be impelemented,
 that will try to find similar documents on the web based on a given document,
-and it will give a scores, representing how much documents are similar to each other. For more thorough project document open [doc/main.pdf](doc/main.pdf).
+and it will give scores, representing how much documents are similar to each other. For more thorough project document open [doc/main.pdf](doc/main.pdf).
 ### Phases
 - [x] Implementing LCS
 - [x] Similarity and Dependency Score
@@ -33,11 +33,11 @@ Options:
 Commands:
   check-dir       Find most similar pairs for each file in the directory.
   check-files     Check the similarity of two code files.
-  clean-comments  Find most similar pairs for each file in the directory.
+  clean-comments  Remove c-style and python-style comments for each file in the directory.
   query           Search files on the google.
 
 ```
-If the result is the same, you are good to use other commands. There are some code samples in the folder code-samples of project. By the following command you can find most similar pairs in the folder:
+If the result is the same, you are good to use other commands. There are some code samples in the folder code-samples of the project. By the following command you can find most similar pairs in the folder:
 ### example 1
 ``` bash
 $ docsim check-dir  code-samples
