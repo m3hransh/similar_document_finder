@@ -1,11 +1,12 @@
 # Find Similar Documents (using LCS) 
-In this project, we are going to impelement a similar document finder
-that will try to find similar document on the web based on the given document,
-and it's going to give a score how much the documents are similar to each other.
+**This is an Algorithm Course(Winter 2020) Project of [Bu-Ali Sina University](http://basu.ac.ir/en/home).**
+In this project, a similar document finder will be impelemented,
+that will try to find similar documents on the web based on a given document,
+and it will give a scores, representing how much documents are similar to each other. For more thorough project document open [doc/main.pdf](doc/main.pdf).
 ### Phases
 - [x] Implementing LCS
 - [x] Similarity and Dependency Score
-- [x] Scrape specific website documents and compare to a given document
+- [x] Scrape specific website documents and compare it to a given document
 - [x] Find similar codes to the given code in Geekforgeeks website
 - [ ] General approach of finding similar documents on Google
 ### Application Installation
@@ -16,8 +17,9 @@ you can install command line application.
 $ pip install --editable .
 ```
 ### Examples
-Now **docsim** should be installed in you terminal.
-To make sure write following command on you terminal.
+Now **docsim** should be installed in your machine.
+To make sure, write following command on your terminal.
+You should see the following result.
 ``` bash
 $ docsim --help
 
