@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='docsim',
-    version='0.1',
+    version='0.2',
     py_modules=['app'],
     install_requires=[
         'Click',

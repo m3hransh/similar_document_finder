@@ -3,8 +3,9 @@ import click
 import os
 import sys
 import re
-from scraping import google_lcs
+from scraping import google_lcs, google_list_files
 from docs_sim import Docs_Sim
+from urllib.error import HTTPError
 
 @click.group()
 def cli():
@@ -43,25 +44,28 @@ def query(file, dir, num, keywords, website, plot):
     elif dir:
         if keywords != None:
             files = os.listdir(dir) 
+            query = website
+            query += keywords
 
-            docs_list = []
+            file_contents = []
             for f in files:
                 with open(os.path.join(dir,f), 'r') as file:
                     t1 = file.read()
+                    file_contents.append((f,t1))
 
-                query = website
-                query += keywords
-                url, docs_sim = google_lcs(query, t1, num)
-                docs_list.append((f, url, docs_sim))
+            try:
+                docs_list = google_list_files(query, file_contents, num)
+            
+                docs_list.sort(key = lambda x : x[2],reverse=True)
+                for file_name, url, max_docs in  docs_list:
+                    print('file:{}\nurl: {} \nSimilarity Score: {:.2%}\n'
+                        'dependency Score: ({:.2%}, {:.2%})\n'.format(file_name, url,
+                            max_docs.sim_score(),*max_docs.depend_score()))
         
-            docs_list.sort(key = lambda x : x[2],reverse=True)
-            for d in docs_list:
-                print('file:{}\nurl: {} \nSimilarity Score: {:.2%}\n'
-                    'dependency Score: ({:.2%}, {:.2%})\n'.format(d[0], d[1],
-                        d[2].sim_score(),*d[2].depend_score()))
-    
-            if plot:
-                docs_list[0][2].draw_dist()
+                if plot:
+                    docs_list[0][2].draw_dist()
+            except HTTPError as err:
+                print(f'msg: {err.msg}')
         else:
             click.echo("--keywords option is not given!")
 

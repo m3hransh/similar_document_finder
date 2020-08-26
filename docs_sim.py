@@ -77,7 +77,15 @@ class Docs_Sim:
     def sim_score(self):
         '''
         return: similarity rate'''
-        rate = len(self.lcs)/(len(self.text1)+len(self.text2)-len(self.lcs))
+
+        rate = 0
+        if self.lcs !=[]:
+            try:
+                rate = len(self.lcs)/(len(self.text1)+len(self.text2)-len(self.lcs))
+            except ZeroDivisionError :
+                print(f'lcs: {self.lcs}')
+                print(f"text1: {self.text1}")
+                print(f'text2: {self.text2}')
 
         return rate
 
@@ -86,8 +94,15 @@ class Docs_Sim:
         '''
         return: (dependency score of t1 on t2, dependency score of t2 on t1)'''
         if len(self.text1) != 0 and len(self.text2):
-            dep_t1 = len(self.lcs)/len(self.text1)
-            dep_t2 = len(self.lcs)/len(self.text2)
+            try: 
+                dep_t1 = len(self.lcs)/len(self.text1)
+            except ZeroDivisionError as err:
+                dep_t1 = 0
+            try:
+                dep_t2 = len(self.lcs)/len(self.text2)
+            except ZeroDivisionError as err:
+                dep_t2 = 0
+
             return (dep_t1, dep_t2) 
         else:
             return (0, 0)
