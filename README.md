@@ -1,8 +1,5 @@
 # Find Similar Documents (using LCS) 
-**This is an Algorithm Course (Winter 2020) Project of [Bu-Ali Sina University](http://basu.ac.ir/en/home).**
-In this project, a similar-document-finder will be impelemented,
-that will try to find similar documents on the web based on a given document,
-and it will give scores, representing how much documents are similar to each other. For more thorough project document open [doc/main.pdf](doc/main.pdf).
+**This project is an Algorithm Course (Winter 2020) Project of [Bu-Ali Sina University](http://basu.ac.ir/en/home)**. In this project, a similar-document-finder is implemented, that will try to find similar documents on the web-based on some given documents. It measures how much the documents are close to each other. For more thorough project documentation, click doc/main.pdf. [doc/main.pdf](doc/main.pdf).
 ### Phases
 - [x] Implementing LCS
 - [x] Similarity and Dependency Score
@@ -11,8 +8,8 @@ and it will give scores, representing how much documents are similar to each oth
 - [ ] General approach of finding similar documents on Google
 ### Application Installation
 Install Python3 on your machine.
-By the following command in the directory of the cloned porject
-you can install command line application.
+By the following command in the directory of the cloned project
+you can install a command-line application.
 ``` bash
 $ pip install --editable .
 ```
@@ -37,7 +34,7 @@ Commands:
   query           Search files on the google.
 
 ```
-If the result is the same, you are good to use other commands. There are some code samples in the folder code-samples of the project. By the following command you can find most similar pairs in the folder:
+If the result is the same, you are good to use other commands. There are some code samples in the folder code-samples of the project. By the following command, you can find the most similar pairs in the folder:
 ### example 1
 ``` bash
 $ docsim check-dir  code-samples
