@@ -1,5 +1,5 @@
 # Find Similar Documents (using LCS) 
-**This project is a Robtics Course (Winter 2020) Project of [Computer Engineering Bu-Ali Sina University](http://eng.basu.ac.ir/en/ce)**. In this project, a similar-document-finder is implemented, that will try to find similar documents on the web-based on some given documents. It measures how much the documents are close to each other. For more thorough project documentation, click doc/main.pdf. [doc/main.pdf](doc/main.pdf).
+**This project is a Algorithms Design Course (Winter 2020) Project of [Computer Engineering Bu-Ali Sina University](http://eng.basu.ac.ir/en/ce)**. In this project, a similar-document-finder is implemented, that will try to find similar documents on the web-based on some given documents. It measures how much the documents are close to each other. For more thorough project documentation, click doc/main.pdf. [doc/main.pdf](doc/main.pdf).
 ### Phases
 - [x] Implementing LCS
 - [x] Similarity and Dependency Score
